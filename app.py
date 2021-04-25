@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request
 from flask_restful import Api
-import pickle
+import joblib
 from flask_restful import Resource,reqparse
 
 app=Flask(__name__)
@@ -16,7 +16,7 @@ def index():
         parser.add_argument('Moisture',type=str,required=True,help="Moisture cannot be left blank ")
         parser.add_argument('Growth',type=str,required=True,help="Growth cannot be left blank ")
         data=parser.parse_args()
-        model = pickle.load(open('./resources/ml-model.pkl', 'rb'))
+        model = joblib.load(open('./resources/filename.joblib', 'rb'))
         predict = model.predict([[data['EC'],data['Temp'],data['Moisture'],data['Growth']]])
         print(predict)
         return predict[0]
