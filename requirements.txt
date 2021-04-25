@@ -1,4 +1,7 @@
 flask
 flask-restful
-flask-jwt-extended
+pandas
+requests
+scikit-learn
+scipy
 gunicorn
